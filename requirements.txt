@@ -1,0 +1,5 @@
+Django==1.7.1
+PyMySQL==0.6.2
+freeze==0.8.0
+six==1.8.0
+wsgiref==0.1.2
