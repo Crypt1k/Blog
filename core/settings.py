@@ -61,7 +61,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'zxcv2783',
         'HOST': '',
         'POST': '',
     }
@@ -84,3 +84,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Customize project
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+# Auth
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
+LOGIN_REDIRECT_URL = '/'
