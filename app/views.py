@@ -6,4 +6,4 @@ from app.models import Article
 @login_required()
 def index_view(request):
     articles = Article.objects.all()
-    return render(request, 'app/index.html', {'article_list': articles, 'r': r})
+    return render(request, 'app/index.html', {'article_list': articles})
