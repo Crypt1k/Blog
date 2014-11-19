@@ -8,7 +8,7 @@ def register_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/register')
+            return HttpResponseRedirect('/')
     else:
         form = RegisterForm()
     return render(request, 'userAuth/register.html', {'form': form})

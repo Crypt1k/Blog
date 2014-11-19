@@ -1,3 +1,5 @@
 from django.contrib import admin
+from app.models import Article
 
-# Register your modelsts here.
+
+admin.site.register(Article)

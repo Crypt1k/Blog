@@ -2,5 +2,17 @@
 
 {% block content %}
     <h1>Welcome to my blog!</h1>
+    {% if article_list %}
+    <ul>
+    {% for article in article_list %}
+            <li><h3>{{ article.headline }}</h3>
+            <p>{{ article.content }}</p>
+            <p>(created: {{ article.pub_date|date:"Y-m-d" }}) by {{ article.reporter.username }}</p>
+            </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No articles available.</p>
+{% endif %}
 {% endblock %}
 
