@@ -1,9 +1,11 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required, permission_required
+from django.views import generic
 from app.models import Article
 
 
-@login_required()
-def index_view(request):
-    articles = Article.objects.all()
-    return render(request, 'app/index.html', {'article_list': articles})
+class IndexView(generic.ListView):
+    template_name = 'app/index.html'
+    context_object_name = 'articles'
+    paginate_by = 2
+
+    def get_queryset(self):
+        return Article.objects.all()
