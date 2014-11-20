@@ -3,22 +3,26 @@
 {% load bootstrap3 %}
 
 {% block extrastyle %}
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'userAuth/style.css' %}" />
-    {# Load CSS and JavaScript #}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'userAuth/style.css' %}" />
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 {% endblock %}
 
 {% block content %}
-<h1>Registration:</h1>
-<form action="{% url 'userAuth:register' %}" method="post" class="form">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-    <button type="Send" class="btn btn-primary">
-      {% bootstrap_icon "star" %} Create account
-    </button>
-  {% endbuttons %}
-</form>
+    <h1>Registration</h1>
+    {% if user.is_authenticated %}
+        <p>You're already logged.</p>
+    {% else %}
+    <form action="{% url 'userAuth:register' %}" method="post" class="form">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+        <button type="Send" class="btn btn-primary">
+          {% bootstrap_icon "star" %} Create account
+        </button>
+      {% endbuttons %}
+    </form>
+    {% endif %}
 {% endblock %}
