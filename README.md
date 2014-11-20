@@ -5,7 +5,7 @@ To quickly try it locally:
 
 pip install -r ../requirements.txt
 
-python manage.py syncdb --migrate
+python manage.py migrate
 
 python manage.py runserver
 

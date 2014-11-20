@@ -11,8 +11,5 @@ class Article(models.Model):
     def __str__(self):
         return self.headline
 
-    def __unicode__(self):
-        return self.headline
-
     class Meta:
         ordering = ('headline',)

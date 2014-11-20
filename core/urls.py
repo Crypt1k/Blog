@@ -1,5 +1,7 @@
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,3 +20,5 @@ urlpatterns = patterns('',
     url(r'^register/$', include('userAuth.urls', namespace='userAuth')),
     url(r'^', include('app.urls', namespace='app')),
 )
+
+urlpatterns += staticfiles_urlpatterns()
