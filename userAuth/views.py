@@ -1,14 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.views.generic.edit import FormView
 from userAuth.forms import RegisterForm
 
 
-def register_view(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    else:
-        form = RegisterForm()
-    return render(request, 'userAuth/register.html', {'form': form})
+class RegisterView(FormView):
+    template_name = 'userAuth/register.html'
+    form_class = RegisterForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.save()
+        return super(RegisterView, self).form_valid(form)

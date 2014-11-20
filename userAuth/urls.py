@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
-
+from userAuth.views import RegisterView
 
 urlpatterns = patterns('',
-    url(r'^$',  'userAuth.views.register_view', name='register'),
+    url(r'^$', RegisterView.as_view(), name='register'),
 )
