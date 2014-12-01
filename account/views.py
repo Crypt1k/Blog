@@ -1,10 +1,10 @@
 from django.views import generic
-from userAuth.forms import RegisterForm
+from account.forms import RegisterForm
 from django.contrib.auth import authenticate, login
 
 
 class RegisterView(generic.CreateView):
-    template_name = 'userAuth/register.html'
+    template_name = 'account/register.html'
     form_class = RegisterForm
     success_url = '/'
 

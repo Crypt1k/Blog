@@ -1,4 +1,4 @@
-{% extends "admin/base_site.html" %}
+{% extends "blog/base_site.html" %}
 {% load i18n admin_static %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />{% endblock %}
@@ -12,6 +12,9 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    <p>You're already logged.</p>
+{% else %}
 {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
 <p class="errornote">
 {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
@@ -56,4 +59,5 @@
 document.getElementById('id_username').focus()
 </script>
 </div>
+{%  endif %}
 {% endblock %}
