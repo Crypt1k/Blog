@@ -1,7 +1,14 @@
 {% extends "blog/base_site.html" %}
 {% load i18n admin_static %}
+{% load bootstrap3 %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />{% endblock %}
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />
+{% bootstrap_css %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{% bootstrap_javascript %}
+{% endblock %}
 
 {% block bodyclass %}login{% endblock %}
 
@@ -15,29 +22,10 @@
 {% if user.is_authenticated %}
     <p>You're already logged.</p>
 {% else %}
-{% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
-<p class="errornote">
-{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
-</p>
-{% endif %}
-
-{% if form.non_field_errors or form.this_is_the_login_form.errors %}
-{% for error in form.non_field_errors|add:form.this_is_the_login_form.errors %}
-<p class="errornote">
-    {{ error }}
-</p>
-{% endfor %}
-{% endif %}
-
 <div id="content-main">
 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+  {% bootstrap_form form %}
   <div class="form-row">
-    {% if not form.this_is_the_login_form.errors %}{{ form.username.errors }}{% endif %}
-    <label for="id_username" class="required">{{ form.username.label }}:</label> {{ form.username }}
-  </div>
-  <div class="form-row">
-    {% if not form.this_is_the_login_form.errors %}{{ form.password.errors }}{% endif %}
-    <label for="id_password" class="required">{% trans 'Password:' %}</label> {{ form.password }}
     <input type="hidden" name="this_is_the_login_form" value="1" />
     <input type="hidden" name="next" value="{{ next }}" />
   </div>
@@ -46,15 +34,12 @@
     <a href="{% url 'password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
   </div>
   <div class="password-reset-link">
-    <a href="{% url 'account:register' %}">{% trans 'Register' %}</a>
+    <a href="{% url 'account:register' %}">{% trans 'Create account' %}</a>
   </div>
 
-  <div class="submit-row">
-    <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" />
-  </div>
-  {% if form.non_field_errors %}
-  <ul class="errorlist"><li>Your username and password didn't match. Please try again.</li></ul>
-  {% endif %}
+  <button type="submit" class="btn btn-primary">
+    {% bootstrap_icon "star" %} {% trans 'Log in' %}
+  </button>
 </form>
 
 <script type="text/javascript">
