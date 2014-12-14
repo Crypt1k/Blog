@@ -3,5 +3,5 @@ from django.conf.urls import patterns, url
 from app.views import IndexView
 
 urlpatterns = patterns('',
-    url(r'^$', login_required(IndexView.as_view()), name='app'),
+    url(r'^$', login_required(IndexView.as_view()), name='index'),
 )
