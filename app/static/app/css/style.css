@@ -1,0 +1,66 @@
+ul li {
+    list-style-type: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 978px;
+    min-width: 678px;
+}
+
+.post {
+    color: #444;
+    font-size: 14px;
+}
+
+.post .title a {
+    color: #444;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.post .title a:hover {
+    color: #9d9d9d;
+    text-decoration: none;
+}
+
+.post-header {
+    border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid #ebebeb;
+    height: 40px;
+    line-height: 40px;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.post-body {
+    line-height: 1.4;
+    color: #444;
+}
+
+.post-footer {
+    margin: 15px 0 0;
+}
+
+.caption {
+    color: #444;
+    font-weight: bold;
+}
+.publish-date {
+    color: #656565;
+    font-weight: normal;
+}
+
+.byline-author {
+    color: #666;
+    font-weight: normal;
+}
+
+.pagination {
+    float: right;
+    margin: 0 100px 0 0;
+}

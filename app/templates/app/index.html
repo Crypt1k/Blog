@@ -1,28 +1,40 @@
 {% extends "blog/base_site.html" %}
 
 {% load bootstrap3 %}
+{% load staticfiles %}
 
 {% block extrastyle %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}" />
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome to my blog!</h1>
+<div class="wrapper">
     {% if articles %}
-    <ul>
-    {% for article in articles %}
-            <li><h3>{{ article.headline }}</h3>
-            <p>{{ article.content }}</p>
-            <p>(created: {{ article.pub_date|date:"Y-m-d" }}) by {{ article.reporter.username }}</p>
+        <ul class="main">
+            {% for article in articles %}
+            <li class="post">
+                <h2 class="title">
+                    <a title="{{ article.headline }}" href="#">{{ article.headline }}</a>
+                </h2>
+                <div class="post-header">
+                    <span class="caption">Posted: </span>
+                    <span class="publish-date">{{ article.pub_date|date:"l, F d, Y" }}</span>
+                </div>
+                <div class="post-body">
+                    {{ article.content| safe }}
+                </div>
+                <div class="post-footer">
+                    <span class="byline-author">Posted by {{ article.reporter.username }}</span>
+                </div>
             </li>
-    {% endfor %}
-    </ul>
-{% else %}
+            {% endfor %}
+        </ul>
+        {% bootstrap_pagination page_obj url="?page=1"  size="small" %}
+    {% else %}
     <p>No articles available.</p>
-{% endif %}
-
-{% bootstrap_pagination page_obj url="?page=1"  size="small" %}
-
+    {% endif %}
+</div>
 {% endblock %}
 
