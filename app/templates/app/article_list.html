@@ -16,7 +16,10 @@
             {% for article in articles %}
             <li class="post">
                 <h2 class="title">
-                    <a title="{{ article.headline }}" href="#">{{ article.headline }}</a>
+                    <a title="{{ article.headline }}"
+                        href="{% url 'app:article_detail' year=article.pub_date|date:"Y" month=article.pub_date|date:"m" day=article.pub_date|date:"d" slug=article.slug %}">
+                        {{ article.headline }}
+                    </a>
                 </h2>
                 <div class="post-header">
                     <span class="caption">Posted: </span>
