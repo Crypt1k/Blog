@@ -1,0 +1,14 @@
+<h1>{{ article.headline }}</h1>
+<p>{{ article.content }}</p>
+<p>Reporter: {{ article.reporter }}</p>
+<p>Published: {{ article.pub_date|date }}</p>
+
+{% if queries %}
+    <ul>
+    {% for query in queries %}
+        <p>{{ query.sql }}</p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No queries</p>
+{% endif %}
