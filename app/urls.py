@@ -9,7 +9,7 @@ urlpatterns = patterns(
     url(r'^(?P<year>\d{4})/$',
         login_required(ArticleYearView.as_view()), name='article_year'),
     url(r'^(?P<year>\d{4})/(?P<month>\d+)/$',
-        login_required(ArticleMonthView.as_view()), name='archive_month'),
+        login_required(ArticleMonthView.as_view()), name='article_month'),
     url(r'^(?P<year>\d{4})/(?P<month>\d+)/(?P<day>\d+)/$',
         login_required(ArticleDayView.as_view()), name='article_day'),
     url(r'^(?P<year>\d{4})/(?P<month>\d+)/(?P<day>\d+)/(?P<slug>[-_\w]+)/$',

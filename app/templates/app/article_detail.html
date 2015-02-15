@@ -1,8 +1,10 @@
+{% extends "blog/base_site.html" %}
+
+{% block content %}
 <h1>{{ article.headline }}</h1>
 <p>{{ article.content }}</p>
 <p>Reporter: {{ article.reporter }}</p>
 <p>Published: {{ article.pub_date|date }}</p>
-
 {% if queries %}
     <ul>
     {% for query in queries %}
@@ -12,3 +14,4 @@
 {% else %}
     <p>No queries</p>
 {% endif %}
+{% endblock %}
