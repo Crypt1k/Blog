@@ -1,5 +1,8 @@
 from django.views import generic
+from django.db.models import Q
 from app.models import Article
+from functools import reduce
+import operator
 
 
 class ArticleListMixin(object):
@@ -12,7 +15,20 @@ class ArticleListMixin(object):
 
 
 class ArticleListView(ArticleListMixin, generic.ArchiveIndexView):
-    pass
+    def get_context_data(self, **kwargs):
+        context = super(ArticleListView, self).get_context_data(**kwargs)
+        if self.request.GET.get('search'):
+            context.update({'extra_param': 'search=' + self.request.GET.get('search', None)})
+        return context
+
+    def get_queryset(self):
+        search = self.request.GET.get('search')
+        if search:
+            q1 = reduce(operator.and_, (Q(headline__icontains=x) for x in search.split(' ')))
+            q2 = reduce(operator.and_, (Q(content__icontains=x) for x in search.split(' ')))
+            return Article.objects.filter(q1 | q2)
+        else:
+            return Article.objects.all()
 
 
 class ArticleYearView(ArticleListMixin, generic.YearArchiveView):

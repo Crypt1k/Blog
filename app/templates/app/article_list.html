@@ -8,6 +8,11 @@
 
 {% block content %}
 <div class="wrapper">
+    <form action="{% url 'app:article_list' %}" method="get" class="form float-right">
+        <input type="search" placeholder="Type any title or word" value="" name="search"/>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br class="clear">
     {% if articles %}
     <ul class="main">
         {% for article in articles %}
@@ -31,9 +36,9 @@
         </li>
         {% endfor %}
     </ul>
-    {% bootstrap_pagination page_obj url="?page=1"  size="small" %}
+    {% bootstrap_pagination page_obj url="?page=1" size="small" extra=extra_param %}
     {% else %}
-    <p>No articles available.</p>
+    <p>No articles found.</p>
     {% endif %}
 </div>
 {% endblock %}

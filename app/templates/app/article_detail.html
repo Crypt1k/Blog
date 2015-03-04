@@ -7,6 +7,11 @@
 
 {% block content %}
 <div class="wrapper">
+    <form action="{% url 'app:article_list' %}" method="get" class="form float-right">
+        <input type="search" placeholder="Type any title or word" value="" name="search"/>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br class="clear">
     <ul class="main">
         <li class="post">
             <h2 class="title">{{ article.headline }}</h2>
