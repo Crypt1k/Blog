@@ -1,7 +1,10 @@
 from django.views import generic
 from django.db.models import Q
 from app.models import Article
-from functools import reduce
+try:
+    from functools import reduce
+except ImportError:
+    pass
 import operator
 
 
