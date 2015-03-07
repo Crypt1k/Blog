@@ -13,11 +13,10 @@ class ArticleListMixin(object):
     template_name = 'app/article_list.html'
     context_object_name = 'articles'
     paginate_by = 2
-    date_field = 'pub_date'
     allow_empty = True
 
 
-class ArticleListView(ArticleListMixin, generic.ArchiveIndexView):
+class ArticleListView(ArticleListMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         if self.request.GET.get('search'):
@@ -34,15 +33,23 @@ class ArticleListView(ArticleListMixin, generic.ArchiveIndexView):
             return Article.objects.all()
 
 
+class ArticleLabelView(ArticleListMixin, generic.ListView):
+    def get_queryset(self):
+        return Article.objects.filter(Q(labels__name=self.kwargs.get('name')))
+
+
 class ArticleYearView(ArticleListMixin, generic.YearArchiveView):
+    date_field = 'pub_date'
     make_object_list = True
 
 
 class ArticleMonthView(ArticleListMixin, generic.MonthArchiveView):
+    date_field = 'pub_date'
     month_format = '%m'
 
 
 class ArticleDayView(ArticleListMixin, generic.DayArchiveView):
+    date_field = 'pub_date'
     month_format = '%m'
 
 
@@ -52,4 +59,3 @@ class ArticleDetailView(generic.DateDetailView):
     context_object_name = 'article'
     date_field = 'pub_date'
     month_format = '%m'
-

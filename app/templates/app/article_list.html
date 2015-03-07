@@ -32,6 +32,13 @@
             </div>
             <div class="post-footer">
                 <span class="byline-author">Posted by {{ article.reporter.username }}</span>
+                {% if article.labels.all %}
+                <br class="clear">
+                <span class="labels-caption">Labels:</span>
+                {% for label in article.labels.all %}
+                    <a title="{{ label.name }}" href="{% url 'app:article_label' name=label.name %}">{{ label.name }}</a>
+                {% endfor %}
+                {% endif %}
             </div>
         </li>
         {% endfor %}
