@@ -20,6 +20,7 @@
     <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
     {% bootstrap_javascript %}
 
+    {% block extrascript %}{% endblock %}
     {% block extrahead %}{% endblock %}
     {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 </head>

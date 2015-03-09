@@ -1,0 +1,12 @@
+{% extends "blog/base_site.html" %}
+{% load staticfiles %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/prettify.css' %}" />
+{% endblock %}
+
+{% block extrascript %}
+<script src="{% static 'app/js/prettify.js' %}"></script>
+<script src="{% static 'app/js/script.js' %}"></script>
+{% endblock %}
