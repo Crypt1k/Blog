@@ -15,6 +15,7 @@
 
 .prettyprint span {
   font-size: 14px;
+  line-height: 1.4;
 }
 
 .prettyprint.linenums {
