@@ -9,8 +9,8 @@ class RegisterView(generic.CreateView):
     success_url = '/'
 
     def form_valid(self, form):
-        form.save()
+        result = super(RegisterView, self).form_valid(form)
         new_user = authenticate(username=self.request.POST['username'],
-                                password=self.request.POST['password'])
+                                password=self.request.POST['password1'])
         login(self.request, new_user)
-        return super(RegisterView, self).form_valid(form)
+        return result
