@@ -35,7 +35,7 @@ class ArticleListView(ArticleListMixin, generic.ListView):
 
 class ArticleLabelView(ArticleListMixin, generic.ListView):
     def get_queryset(self):
-        return Article.objects.filter(Q(labels__name=self.kwargs.get('name')))
+        return Article.objects.filter(labels__name=self.kwargs.get('name'))
 
 
 class ArticleYearView(ArticleListMixin, generic.YearArchiveView):
