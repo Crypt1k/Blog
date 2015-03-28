@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.conf.urls import patterns, url
 from app.views import (ArticleListView, ArticleLabelView, ArticleYearView, ArticleMonthView,
                        ArticleDayView, ArticleDetailView)
@@ -16,5 +15,5 @@ urlpatterns = patterns(
     url(r'^(?P<year>\d{4})/(?P<month>\d+)/(?P<day>\d+)/$',
         ArticleDayView.as_view(), name='article_day'),
     url(r'^(?P<year>\d{4})/(?P<month>\d+)/(?P<day>\d+)/(?P<slug>[-_\w]+)/$',
-        login_required(ArticleDetailView.as_view()), name='article_detail'),
+        ArticleDetailView.as_view(), name='article_detail'),
 )
