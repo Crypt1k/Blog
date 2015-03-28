@@ -1,4 +1,4 @@
-# Blog (Django 1.7.x)
+# [Cryptic`s Blog](http://ec2-54-149-76-18.us-west-2.compute.amazonaws.com/)
 
 To quickly try it locally:
 
