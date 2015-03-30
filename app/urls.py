@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
-from app.views import (ArticleListView, ArticleLabelView, ArticleYearView, ArticleMonthView,
+from app.views import (ArticleListView, ArticleLabelView,
+                       ArticleYearView, ArticleMonthView,
                        ArticleDayView, ArticleDetailView)
 
 urlpatterns = patterns(

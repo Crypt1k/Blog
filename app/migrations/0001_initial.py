@@ -15,9 +15,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Article',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True,
+                                        primary_key=True, serialize=False)),
                 ('headline', models.CharField(max_length=100)),
-                ('slug', models.SlugField(unique=True, max_length=100, editable=False)),
+                ('slug', models.SlugField(unique=True, max_length=100,
+                                          editable=False)),
                 ('content', models.TextField()),
                 ('pub_date', models.DateField()),
             ],
@@ -29,7 +31,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Label',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True,
+                                        primary_key=True, serialize=False)),
                 ('name', models.CharField(unique=True, max_length=100)),
             ],
             options={

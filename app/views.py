@@ -20,14 +20,18 @@ class ArticleListView(ArticleListMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         if self.request.GET.get('search'):
-            context.update({'extra_param': 'search=' + self.request.GET.get('search', None)})
+            context.update({
+                'extra_param': 'search=' + self.request.GET.get('search', None)
+            })
         return context
 
     def get_queryset(self):
         search = self.request.GET.get('search')
         if search:
-            q1 = reduce(operator.and_, (Q(headline__icontains=x) for x in search.split(' ')))
-            q2 = reduce(operator.and_, (Q(content__icontains=x) for x in search.split(' ')))
+            q1 = reduce(operator.and_,
+                        (Q(headline__icontains=x) for x in search.split(' ')))
+            q2 = reduce(operator.and_,
+                        (Q(content__icontains=x) for x in search.split(' ')))
             return Article.objects.filter(q1 | q2)
         else:
             return Article.objects.all()
