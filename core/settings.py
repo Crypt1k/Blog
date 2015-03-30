@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
-    # 'account',  # Use it if you need authorization for the site
+    'account',
     'app',
 )
 
