@@ -24,7 +24,7 @@ class ArticleViewTests(TestCase):
                                         email='admin@gmail.com',
                                         password='top_secret')
 
-        label = Label.objects.create(name='Label1')
+        label = Label.objects.create(name='label1')
 
         article = Article.objects.create(headline='First Topic',
                                          content='Content for 1st topic',
@@ -100,10 +100,9 @@ class ArticleViewTests(TestCase):
     def test_article_label_view(self):
         """ List of existing ar """
         response = self.client.get(reverse('app:article_label',
-                                           kwargs=dict(name='Label1')))
+                                           kwargs=dict(name='label1')))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Label1')
-        print(response.content)
+        self.assertContains(response, 'label1')
 
     def test_article_label_fail_view(self):
         """ Test for fake label """
