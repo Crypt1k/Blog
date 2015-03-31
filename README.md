@@ -1,4 +1,4 @@
-# [Cryptic`s Blog](http://ec2-54-149-76-18.us-west-2.compute.amazonaws.com/)
+# Blog available [here](http://ec2-54-149-76-18.us-west-2.compute.amazonaws.com/)
 
 To quickly try it locally:
 
