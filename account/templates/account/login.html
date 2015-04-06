@@ -1,4 +1,4 @@
-{% extends "blog/base_site.html" %}
+{% extends "app/base.html" %}
 {% load i18n admin_static %}
 {% load bootstrap3 %}
 
@@ -37,9 +37,7 @@
     <a href="{% url 'account:register' %}">{% trans 'Create account' %}</a>
   </div>
 
-  <button type="submit" class="btn btn-primary">
-    {% bootstrap_icon "star" %} {% trans 'Log in' %}
-  </button>
+  <button type="submit" class="btn btn-primary">{% trans 'Log in' %}</button>
 </form>
 
 <script type="text/javascript">

@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 admin.autodiscover()
+admin.site.site_header = 'Cryptic\'s blog admin'
 
 urlpatterns = patterns(
     '',

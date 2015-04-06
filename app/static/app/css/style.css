@@ -6,6 +6,14 @@ h1 {
     text-align: center;
 }
 
+#container #header {
+    background-color: #3071a9;
+}
+
+.form input {
+    width: 350px;
+}
+
 .wrapper {
     margin: 0 auto;
     max-width: 978px;
