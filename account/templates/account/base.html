@@ -1,0 +1,9 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "account/css/popup.css" %}" />
+{% endblock %}
+
+{% block bodyclass %}popup{% endblock %}

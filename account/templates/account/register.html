@@ -1,7 +1,11 @@
-{% extends "app/base.html" %}
-{% load bootstrap3 %}
+{% extends "account/base.html" %}
+{% load i18n bootstrap3 %}
 
-{% block content_title %}<h1>Registration</h1>{% endblock %}
+{% block title %}{{ block.super }} {% trans "Registration" %}{% endblock %}
+
+{% block currentpage %}
+&rsaquo; {% trans "Registration" %}
+{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}

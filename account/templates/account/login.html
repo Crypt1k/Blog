@@ -1,43 +1,37 @@
-{% extends "app/base.html" %}
-{% load i18n admin_static %}
-{% load bootstrap3 %}
+{% extends "account/base.html" %}
+{% load i18n bootstrap3 %}
 
-{% block stylesheet %}
-{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />
+{% block title %}{{ block.super }} {% trans "Login" %}{% endblock %}
+
+{% block currentpage %}
+&rsaquo; {% trans "Login" %}
 {% endblock %}
-
-{% block bodyclass %}login{% endblock %}
-
-{% block content_title %}{% endblock %}
-
-{% block breadcrumbs %}{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-    <p>You're already logged.</p>
+<p>You're already logged.</p>
 {% else %}
 <div id="content-main">
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-  {% bootstrap_form form %}
-  <div class="form-row">
-    <input type="hidden" name="this_is_the_login_form" value="1" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </div>
+    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="form-row">
+            <input type="hidden" name="this_is_the_login_form" value="1" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>
 
-  <div class="password-reset-link">
-    <a href="{% url 'account:password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
-  </div>
-  <div class="password-reset-link">
-    <a href="{% url 'account:register' %}">{% trans 'Create account' %}</a>
-  </div>
+        <div class="password-reset-link">
+            <a href="{% url 'account:password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
+        </div>
+        <div class="password-reset-link">
+            <a href="{% url 'account:register' %}">{% trans 'Create account' %}</a>
+        </div>
 
-  <button type="submit" class="btn btn-primary">{% trans 'Log in' %}</button>
-</form>
+        <button type="submit" class="btn btn-primary">{% trans 'Log in' %}</button>
 
-<script type="text/javascript">
-    document.getElementById('id_username').focus()
-</script>
+        <script type="text/javascript">
+            document.getElementById('id_username').focus()
+        </script>
+    </form>
 </div>
-{%  endif %}
+{% endif %}
 {% endblock %}

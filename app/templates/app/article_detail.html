@@ -1,14 +1,10 @@
 {% extends "app/article_base.html" %}
-{% load bootstrap3 %}
-{% load i18n %}
+{% load i18n bootstrap3 %}
 
-{% block title %}{{ article.headline }}{% endblock %}
+{% block title %}{{ block.super }}: {{ article.headline }}{% endblock %}
 
-{% block breadcrumbs %}
-<div class="breadcrumbs">
-    <a href="{% url 'app:article_list' %}">{% trans 'Home' %}</a>
-    &rsaquo; {{ article.headline }}
-</div>
+{% block currentpage %}
+&rsaquo; {{ article.headline }}
 {% endblock %}
 
 {% block content %}

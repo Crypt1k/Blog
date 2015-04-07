@@ -1,8 +1,12 @@
-{% load staticfiles %}{% load bootstrap3 %}{% load i18n %}
+{% load static i18n bootstrap3 %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
 <head>
-    <title>{% block title %}Cryptic`s blog{% endblock %}</title>
+    <title>
+        {% block title %}
+        Cryptic`s blog{% if title %}: {{ title }}{% endif %}
+        {% endblock %}
+    </title>
 
     {% block stylesheet %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/html5-reset.min.css' %}" />
@@ -21,12 +25,11 @@
     {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 </head>
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+<body class="{% block bodyclass %}{% endblock %}">
 
 <!-- Container -->
 <div id="container">
 
-    {% if not is_popup %}
     <!-- Header -->
     <div id="header">
         <div id="branding">
@@ -38,28 +41,34 @@
         <div id="user-tools">
             {% trans 'Welcome,' %}
             <strong>{% firstof user.get_short_name user.get_username %}</strong>.
-
-            {% block userlinks %}
-            {% if user.has_usable_password %}
-            <a href="{% url 'account:password_change' %}">{% trans 'Change password' %}</a> /
-            {% endif %}
-            <a href="{% url 'account:logout' %}">{% trans 'Log out' %}</a>
-            {% endblock %}
         </div>
         {% endif %}
     </div>
     <!-- END Header -->
-    {% block breadcrumbs %}
+
     <div class="breadcrumbs">
+        {% block homelink %}
         <a href="{% url 'app:article_list' %}">{% trans 'Home' %}</a>
-        {% if title %} &rsaquo; {{ title }}{% endif %}
+        {% endblock %}
+
+        {% block currentpage %}
+        {% if title %}&rsaquo; {{ title }}{% endif %}
+        {% endblock %}
+
+        {% block userlinks %}
+        {% if user.has_usable_password %}
+        <div class="float-right">
+            {% if user.has_usable_password %}
+            <a href="{% url 'account:password_change' %}">{% trans 'Change password' %}</a> /
+            {% endif %}
+            <a href="{% url 'account:logout' %}">{% trans 'Log out' %}</a>
+        </div>
+        {% endif %}
+        {% endblock %}
     </div>
-    {% endblock %}
-    {% endif %}
 
     <!-- Content -->
     <div id="content">
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
         {% block content %}{% endblock %}
         <br class="clear" />
     </div>
