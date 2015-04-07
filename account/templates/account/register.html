@@ -8,13 +8,18 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<p>You're already logged.</p>
-{% else %}
-<form action="{% url 'account:register' %}" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit" class="btn btn-primary">Create account</button>
-</form>
-{% endif %}
+<div id="content-main">
+    {% if user.is_authenticated %}
+    You're already logged.
+    {% else %}
+    <form action="{% url 'account:register' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <p class="login-link">
+            <a href="{% url 'account:login' %}">{% trans 'Already have an account?' %}</a>
+        </p>
+        <button type="submit" class="btn btn-primary">Create account</button>
+    </form>
+    {% endif %}
+</div>
 {% endblock %}

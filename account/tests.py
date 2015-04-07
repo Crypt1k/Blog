@@ -18,14 +18,10 @@ class AccountTests(TestCase):
     def test_create_user(self):
         """ User creation test """
         form = RegisterForm({'username': 'Admin',
-                             'first_name': 'Name',
-                             'last_name': 'LastName',
                              'email': 'admin@gmail.com',
                              'password1': '12345',
                              'password2': '12345'})
         self.assertTrue(form.is_valid())
         user = form.save()
         self.assertEqual(user.username, 'Admin')
-        self.assertEqual(user.first_name, 'Name')
-        self.assertEqual(user.last_name, 'LastName')
         self.assertEqual(user.email, 'admin@gmail.com')

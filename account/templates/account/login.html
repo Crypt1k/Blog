@@ -9,20 +9,19 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<p>You're already logged.</p>
+You're already logged.
 {% else %}
 <div id="content-main">
-    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+    <form action="{{ app_path }}" method="post" id="login-form">
+        {% csrf_token %}
         {% bootstrap_form form %}
-        <div class="form-row">
-            <input type="hidden" name="this_is_the_login_form" value="1" />
-            <input type="hidden" name="next" value="{{ next }}" />
-        </div>
+        <input type="hidden" name="this_is_the_login_form" value="1" />
+        <input type="hidden" name="next" value="{{ next }}" />
 
         <div class="password-reset-link">
             <a href="{% url 'account:password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
         </div>
-        <div class="password-reset-link">
+        <div class="create-account-link">
             <a href="{% url 'account:register' %}">{% trans 'Create account' %}</a>
         </div>
 
