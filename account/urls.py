@@ -4,9 +4,11 @@ from account.views import RegisterView
 urlpatterns = patterns(
     '',
     url(r'^login/$', 'django.contrib.auth.views.login',
-        {'template_name': 'account/login.html'}),
+        {'template_name': 'account/login.html'},
+        name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
-        {'template_name': 'account/logged_out.html'}, name='logout'),
+        {'template_name': 'account/logged_out.html'},
+        name='logout'),
     url(r'^password_change/$', 'django.contrib.auth.views.password_change',
         {'template_name': 'account/password_change_form.html',
          'post_change_redirect': 'account:password_change_done'},

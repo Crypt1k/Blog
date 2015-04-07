@@ -2,17 +2,12 @@
 {% load i18n admin_static %}
 {% load bootstrap3 %}
 
-{% block extrastyle %}
+{% block stylesheet %}
 {{ block.super }}
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />
-{% bootstrap_css %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-{% bootstrap_javascript %}
 {% endblock %}
 
 {% block bodyclass %}login{% endblock %}
-
-{% block nav-global %}{% endblock %}
 
 {% block content_title %}{% endblock %}
 
@@ -41,7 +36,7 @@
 </form>
 
 <script type="text/javascript">
-document.getElementById('id_username').focus()
+    document.getElementById('id_username').focus()
 </script>
 </div>
 {%  endif %}
