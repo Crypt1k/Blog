@@ -1,6 +1,14 @@
 {% extends "app/article_base.html" %}
 {% load bootstrap3 %}
 
+{% block currentpage %}
+{% if extra_param %}
+&rsaquo; Search
+{% elif label_filter %}
+&rsaquo; Label
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="wrapper">
     {% include "app/article_search_form.html" %}
