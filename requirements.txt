@@ -1,5 +1,5 @@
-Django==1.7.4
-PyMySQL==0.6.3
-freeze==0.8.0
+Django==1.8
+PyMySQL==0.6.6
+freeze==1.0.9
 six==1.9.0
 django-bootstrap3
