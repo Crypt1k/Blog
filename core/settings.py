@@ -96,8 +96,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = False
-
 gettext_noop = lambda s: s
+
 LANGUAGES = (
     ('en', gettext_noop('English')),
     ('ru', gettext_noop('Russian')),  # (Optional)
