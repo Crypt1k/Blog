@@ -97,6 +97,17 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = False
 
+gettext_noop = lambda s: s
+LANGUAGES = (
+    ('en', gettext_noop('English')),
+    ('ru', gettext_noop('Russian')),  # (Optional)
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'account/locale'),
+    os.path.join(BASE_DIR, 'app/locale'),
+)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
@@ -113,15 +124,3 @@ from django.core.urlresolvers import reverse_lazy
 LOGIN_URL = reverse_lazy('account:login')
 LOGOUT_URL = reverse_lazy('account:logout')
 LOGIN_REDIRECT_URL = reverse_lazy('app:article_list')
-
-# Translations
-gettext_noop = lambda s: s
-LANGUAGES = (
-    ('en', gettext_noop('English')),
-    ('ru', gettext_noop('Russian')),  # (Optional)
-)
-
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'account/locale'),
-    os.path.join(BASE_DIR, 'app/locale'),
-)
