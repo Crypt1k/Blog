@@ -10,7 +10,7 @@
 {% block content %}
 <div id="content-main">
     {% if user.is_authenticated %}
-    You're already logged.
+    {% trans "You're already logged." %}
     {% else %}
     <form action="{% url 'account:register' %}" method="post">
         {% csrf_token %}
@@ -18,7 +18,7 @@
         <p class="login-link">
             <a href="{% url 'account:login' %}">{% trans 'Already have an account?' %}</a>
         </p>
-        <button type="submit" class="btn btn-primary">Create account</button>
+        <button type="submit" class="btn btn-primary">{% trans 'Create account' %}</button>
 
         <script type="text/javascript">
             document.getElementById('id_username').focus()

@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <li class="post">
     <h2 class="title">
         <a title="{{ article.headline }}"
@@ -6,17 +8,17 @@
         </a>
     </h2>
     <div class="post-header">
-        <span class="caption">Posted: </span>
+        <span class="caption">{% trans "Posted" %}: </span>
         <span class="publish-date">{{ article.pub_date|date:"l, F d, Y" }}</span>
     </div>
     <div class="post-body">
         {{ article.content|safe }}
     </div>
     <div class="post-footer">
-        <span class="byline-author">Posted by {{ article.reporter.username }}</span>
+        <span class="byline-author">{% trans "Posted by" %} {{ article.reporter.username }}</span>
         {% if article.labels.all %}
         <br class="clear">
-        <span class="labels-caption">Labels:</span>
+        <span class="labels-caption">{% trans "Labels" %}:</span>
         {% for label in article.labels.all %}
             <a title="{{ label.name }}" href="{% url 'app:article_label' name=label.name %}">{{ label.name }}</a>
         {% endfor %}

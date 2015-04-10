@@ -1,11 +1,11 @@
 from django.views import generic
 from django.db.models import Q
-from app.models import Article
 try:
     from functools import reduce
 except ImportError:
     pass
 import operator
+from app.models import Article
 
 
 class ArticleListMixin(object):

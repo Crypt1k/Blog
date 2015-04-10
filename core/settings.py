@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 import pymysql
 pymysql.install_as_MySQLdb()
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -43,6 +44,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -107,6 +109,19 @@ TEMPLATE_DIRS = (
 )
 
 # Auth
-LOGIN_URL = '/login'
-LOGOUT_URL = '/logout'
-LOGIN_REDIRECT_URL = '/'
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = reverse_lazy('account:login')
+LOGOUT_URL = reverse_lazy('account:logout')
+LOGIN_REDIRECT_URL = reverse_lazy('app:article_list')
+
+# Translations
+gettext_noop = lambda s: s
+LANGUAGES = (
+    ('en', gettext_noop('English')),
+    ('ru', gettext_noop('Russian')),  # (Optional)
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'account/locale'),
+    os.path.join(BASE_DIR, 'app/locale'),
+)

@@ -1,11 +1,11 @@
 {% extends "app/article_base.html" %}
-{% load bootstrap3 %}
+{% load i18n bootstrap3 %}
 
 {% block currentpage %}
 {% if extra_param %}
-&rsaquo; Search
+&rsaquo; {% trans "Search" %}
 {% elif label_filter %}
-&rsaquo; Label
+&rsaquo; {% trans "Label" %}
 {% endif %}
 {% endblock %}
 
@@ -20,7 +20,7 @@
     </ul>
     {% bootstrap_pagination page_obj url="?page=1" size="small" extra=extra_param %}
     {% else %}
-    <p>No articles found.</p>
+    <p>{% trans "No articles found." %}</p>
     {% endif %}
 </div>
 {% endblock %}

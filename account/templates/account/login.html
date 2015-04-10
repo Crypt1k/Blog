@@ -1,15 +1,15 @@
 {% extends "account/base.html" %}
 {% load i18n bootstrap3 %}
 
-{% block title %}{{ block.super }} {% trans "Login" %}{% endblock %}
+{% block title %}{{ block.super }} {% trans "Log in" %}{% endblock %}
 
 {% block currentpage %}
-&rsaquo; {% trans "Login" %}
+&rsaquo; {% trans 'Log in' %}
 {% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-You're already logged.
+{% trans "You're already logged." %}
 {% else %}
 <div id="content-main">
     <form action="{{ app_path }}" method="post" id="login-form">

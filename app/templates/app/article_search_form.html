@@ -1,5 +1,7 @@
+{% load i18n %}
+
 <form action="{% url 'app:article_list' %}" method="get" class="form float-right">
-    <input type="search" placeholder="Type any title or word" value="" name="search" />
-    <button type="submit" class="btn btn-primary">Search</button>
+    <input type="search" placeholder="{% trans "Type any title or word" %}" value="" name="search" />
+    <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
 </form>
 <br class="clear">
