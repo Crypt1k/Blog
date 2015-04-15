@@ -5,6 +5,7 @@ try:
 except ImportError:
     pass
 import operator
+from django.conf import settings
 from app.models import Article
 
 
@@ -64,7 +65,12 @@ class ArticleDayView(ArticleListMixin, generic.DayArchiveView):
 
 class ArticleDetailView(generic.DateDetailView):
     model = Article
-    template_name = 'app/article_detail.html'
     context_object_name = 'article'
     date_field = 'pub_date'
     month_format = '%m'
+
+    def get_template_names(self):
+        if 'disqus' in settings.INSTALLED_APPS:
+            return 'app/article_detail_disqus.html'
+        else:
+            return 'app/article_detail.html'

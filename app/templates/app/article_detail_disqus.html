@@ -1,0 +1,18 @@
+{% extends "app/article_base.html" %}
+{% load bootstrap3 disqus_tags %}
+
+{% block title %}{{ block.super }}: {{ article.headline }}{% endblock %}
+
+{% block currentpage %}
+&rsaquo; {{ article.headline }}
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    {% include "app/article_search_form.html" %}
+    <ul class="main">
+        {% include "app/article_post.html" %}
+    </ul>
+    {% disqus_show_comments %}
+</div>
+{% endblock %}

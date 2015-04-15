@@ -9,6 +9,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+gettext_noop = lambda s: s
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +23,7 @@ pymysql.install_as_MySQLdb()
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*)k@b=qyp4v*qsg^c_74(faoxt+_+%z(dmr)a$3w#vu0^3##19'
+SECRET_KEY = '***'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,8 +40,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
-    'account',
     'app',
+    # 'account', #  (Optional) built-in auth
+    # 'disqus', #  (Optional) more info: https://disqus.com
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,7 +99,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = False
-gettext_noop = lambda s: s
 
 LANGUAGES = (
     ('en', gettext_noop('English')),
@@ -119,8 +121,12 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-# Auth
+# Required account in the INSTALLED_APPS
 from django.core.urlresolvers import reverse_lazy
 LOGIN_URL = reverse_lazy('account:login')
 LOGOUT_URL = reverse_lazy('account:logout')
 LOGIN_REDIRECT_URL = reverse_lazy('app:article_list')
+
+# Required disqus in the INSTALLED_APPS
+DISQUS_API_KEY = '***'
+DISQUS_WEBSITE_SHORTNAME = '***'
