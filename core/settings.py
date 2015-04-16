@@ -15,10 +15,6 @@ gettext_noop = lambda s: s
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-import pymysql
-pymysql.install_as_MySQLdb()
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -30,7 +26,6 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
-
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -41,8 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap3',
     'app',
-    # 'account', #  (Optional) built-in auth
     # 'disqus', #  (Optional) more info: https://disqus.com
+    # 'account', #  (Optional) built-in auth
 )
 
 MIDDLEWARE_CLASSES = (
