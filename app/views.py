@@ -13,7 +13,7 @@ class ArticleListMixin(object):
     model = Article
     template_name = 'app/article_list.html'
     context_object_name = 'articles'
-    paginate_by = 2
+    paginate_by = 5
     allow_empty = True
 
 
