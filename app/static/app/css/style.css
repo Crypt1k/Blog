@@ -23,11 +23,6 @@ ul li {
     text-align: right;
 }
 
-.form .form-control,
-.form-inline .form-control {
-    width: 350px;
-}
-
 /* HEADER */
 
 #header {
