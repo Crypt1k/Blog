@@ -23,7 +23,8 @@ ul li {
     text-align: right;
 }
 
-.form input {
+.form .form-control,
+.form-inline .form-control {
     width: 350px;
 }
 
