@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from django.conf import settings
 from account.views import RegisterView
 
 urlpatterns = patterns(
@@ -37,3 +38,10 @@ urlpatterns = patterns(
         name='password_reset_complete'),
     url(r'^registration/$', RegisterView.as_view(), name='register'),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('django.views.static',
+                            (r'media/(?P<path>.*)',
+                             'serve',
+                             {'document_root': settings.MEDIA_ROOT}),
+                            )

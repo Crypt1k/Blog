@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views import generic
 from django.db.models import Q
 try:
@@ -5,7 +6,6 @@ try:
 except ImportError:
     pass
 import operator
-from django.conf import settings
 from app.models import Article
 
 
