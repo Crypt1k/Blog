@@ -1,4 +1,4 @@
-# Cryptic`s Blog
+# Blog
 
 Run blog locally:
 
