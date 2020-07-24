@@ -6,3 +6,5 @@ Run blog locally:
 * ```pip install -r requirements.txt```
 * ```python manage.py migrate```
 * ```python manage.py runserver```
+
+![Blog](index.png)
